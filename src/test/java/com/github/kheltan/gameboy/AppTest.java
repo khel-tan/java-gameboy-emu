@@ -1,4 +1,4 @@
-package com.github.kheltan;
+package com.github.kheltan.gameboy;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
