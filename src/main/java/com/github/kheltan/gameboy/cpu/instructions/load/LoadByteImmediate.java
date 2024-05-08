@@ -6,7 +6,7 @@ import com.github.kheltan.gameboy.cpu.CpuContext;
 import com.github.kheltan.gameboy.cpu.instructions.InstructionContext;
 import com.github.kheltan.gameboy.cpu.instructions.addressing.AddressingMode;
 
-public class LoadByteImmediate extends Load {
+public class LoadByteImmediate extends LoadImmediate {
     private static final int SUCCESS_CYCLES = 8;
     private static final int NUM_OF_ARGS = 1;
 

@@ -6,7 +6,7 @@ import com.github.kheltan.gameboy.cpu.CpuContext;
 import com.github.kheltan.gameboy.cpu.instructions.InstructionContext;
 import com.github.kheltan.gameboy.cpu.instructions.addressing.AddressingMode;
 
-public class LoadWordImmediate extends Load{
+public class LoadWordImmediate extends LoadImmediate{
     private static final int SUCCESS_CYCLES = 16;
     private static final int NUM_OF_ARGS = 2;
     public LoadWordImmediate(final AddressingMode addressingMode){
@@ -15,7 +15,6 @@ public class LoadWordImmediate extends Load{
 
     @Override
     public void execute(CpuContext cpuContext, InstructionContext instructionContext) {
-        // TODO Auto-generated method stub
         List<Integer> arguments = instructionContext.getArguments();
         if(arguments.size() != NUM_OF_ARGS){
             
