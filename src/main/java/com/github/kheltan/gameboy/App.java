@@ -1,5 +1,5 @@
 package com.github.kheltan.gameboy;
-
+import com.github.kheltan.gameboy.cpu.InstructionDecoder;
 /**
  * Hello world!
  *
@@ -8,6 +8,6 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        InstructionDecoder.INSTANCE.decode(0x06);
     }
 }
