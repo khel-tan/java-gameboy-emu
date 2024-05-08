@@ -9,6 +9,7 @@ public class ImmediateMode implements AddressingMode{
         this.immediateValue = immediateValue;
     }
 
+
     @Override
     public int read(CpuContext context) {
         return immediateValue;
