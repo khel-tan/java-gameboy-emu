@@ -1,5 +1,8 @@
 package com.github.kheltan.gameboy.cpu.instructions.load;
 
-public class Load {
+import com.github.kheltan.gameboy.cpu.instructions.Instruction;
+
+public interface Load extends Instruction{
+
     
-}
+} 

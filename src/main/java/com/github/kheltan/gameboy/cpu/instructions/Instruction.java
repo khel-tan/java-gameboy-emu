@@ -5,5 +5,5 @@ import com.github.kheltan.gameboy.cpu.CpuContext;
 
 public interface Instruction {
 
-    
+    void execute(CpuContext context);
 }
