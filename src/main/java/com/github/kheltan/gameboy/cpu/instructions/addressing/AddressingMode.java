@@ -4,5 +4,5 @@ import com.github.kheltan.gameboy.cpu.CpuContext;
 
 public interface AddressingMode {
     int read(CpuContext context);
-    void write(CpuContext context);
+    void write(CpuContext context, int value);
 }

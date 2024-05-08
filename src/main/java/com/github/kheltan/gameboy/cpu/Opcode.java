@@ -49,7 +49,15 @@ public enum Opcode {
     LD_B_D8(0x06),
     LD_D_D8(0x16),
     LD_H_D8(0x26),
-    LD_INDIRECT_HL_D8(0x36);
+    LD_INDIRECT_HL_D8(0x36),
+    LD_A_INDIRECT_BC(0x0A),
+    LD_A_INDIRECT_DE(0x1A),
+    LD_A_INDIRECT_HLplus(0x2A),
+    LD_A_INDIRECT_HLminus(0x3A),
+    LD_C_D8(0x0E),
+    LD_E_D8(0x1E),
+    LD_L_D8(0x2E),
+    LD_A_D8(0x3E);
 
     private static final Map<Integer, Opcode> opcodeMap = new HashMap<>();
     static {

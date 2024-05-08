@@ -1,19 +1,23 @@
 package com.github.kheltan.gameboy.cpu.instructions.addressing;
 
 import com.github.kheltan.gameboy.cpu.CpuContext;
+import com.github.kheltan.gameboy.cpu.Registers.Register;
 
 public class ImmediateMode implements AddressingMode{
-
-    @Override
-    public int read(CpuContext context) {
-        // TODO Auto-generated method stub
-        return 0;
+    private final Register destination;
+    
+    public ImmediateMode(Register destination){
+        this.destination = destination;
     }
 
     @Override
-    public void write(CpuContext context) {
-        // TODO Auto-generated method stub
-        
+    public int read(CpuContext context) {
+        throw new IllegalAccessError("Cannot address memory with immediate value! Load to a register first");
+    }
+
+    @Override
+    public void write(CpuContext context, int value) {
+        context.set(destination, value);
     }
     
 }
