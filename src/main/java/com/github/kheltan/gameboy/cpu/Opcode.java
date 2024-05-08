@@ -42,6 +42,9 @@ public enum Opcode {
     RST_28H(0xEF),
     RST_38H(0xFF),
 
+    /*
+     * 8bit load/store/move instructions
+     */
     LD_INDIRECT_BC_A(0x02),
     LD_INDIRECT_DE_A(0x12),
     LD_INDIRECT_HLplus_A(0x22),
@@ -57,7 +60,15 @@ public enum Opcode {
     LD_C_D8(0x0E),
     LD_E_D8(0x1E),
     LD_L_D8(0x2E),
-    LD_A_D8(0x3E);
+    LD_A_D8(0x3E),
+
+    /*
+     * 16bit load/store/move instructions
+     */
+    LD_BC_D16(0x01),
+    LD_DE_D16(0x11),
+    LD_HL_D16(0x21),
+    LD_SP_D16(0x31);
 
     private static final Map<Integer, Opcode> opcodeMap = new HashMap<>();
     static {

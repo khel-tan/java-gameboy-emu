@@ -5,6 +5,7 @@ import com.github.kheltan.gameboy.cpu.Registers.Register;
 
 import com.github.kheltan.gameboy.cpu.instructions.addressing.ImmediateMode;
 import com.github.kheltan.gameboy.cpu.instructions.load.LoadByteImmediate;
+import com.github.kheltan.gameboy.cpu.instructions.load.LoadWordImmediate;
 
 public class InstructionDecoder {
     public static final InstructionDecoder INSTANCE = new InstructionDecoder();
@@ -30,6 +31,14 @@ public class InstructionDecoder {
                 return new LoadByteImmediate(new ImmediateMode(Register.L));
             case LD_A_D8:
                 return new LoadByteImmediate(new ImmediateMode(Register.A));
+            case LD_BC_D16:
+                return new LoadWordImmediate(new ImmediateMode(Register.BC));
+            case LD_DE_D16:
+                return new LoadWordImmediate(new ImmediateMode(Register.DE));
+            case LD_HL_D16:
+                return new LoadWordImmediate(new ImmediateMode(Register.HL));
+            case LD_SP_D16:
+                return new LoadWordImmediate(new ImmediateMode(Register.SP));
             default:
                 throw new IllegalArgumentException("Unknown opcode");
         }

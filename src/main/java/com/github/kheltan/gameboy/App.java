@@ -14,8 +14,8 @@ public class App
 {
     public static void main( String[] args )
     {
-        Instruction instruction = InstructionDecoder.INSTANCE.decode(0x06);
-        List<Integer> arguments = List.of(0x66);
+        Instruction instruction = InstructionDecoder.INSTANCE.decode(0x11);
+        List<Integer> arguments = List.of(0x66, 0x55);
         InstructionContext instructionContext = new InstructionContext(arguments);
 
         CpuContext cpuContext = new CpuContext(new Registers());
