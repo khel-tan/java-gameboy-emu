@@ -28,7 +28,7 @@ public class AddTest extends CpuTest {
         CpuContext context = cpu.getContext();
         int initialAValue = context.get(Register.A);
         cpu.run();
-        System.out.println(context);
+        // System.out.println(context);
         testRegister(context, Register.A, initialAValue + context.get(registerToTest));  // Assuming AND results go to register A
         // Optionally check flags here, especially the zero flag
     }

@@ -21,6 +21,11 @@ public class CpuTest {
     }
 
     public void testRegister(CpuContext context, Register r, int expected){
-        assertEquals(expected, context.get(r));
+        assertEquals(expected, context.get(r),
+                    "Expected value is " + convertToHex(expected)
+                    + " but the actual value is " + convertToHex(context.get(r)));
+    }
+    public String convertToHex(int value){
+        return String.format("0x%04x", value);
     }
 }

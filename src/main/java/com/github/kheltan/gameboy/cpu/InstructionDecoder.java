@@ -100,7 +100,7 @@ public class InstructionDecoder {
                 return new LoadByte(new RegisterMode(Register.B),
                         new RegisterMode(Register.D));
             case LD_D_C:
-                return new LoadByte(new RegisterMode(Register.B),
+                return new LoadByte(new RegisterMode(Register.C),
                         new RegisterMode(Register.D));
             case LD_D_D:
                 return new LoadByte(new RegisterMode(Register.D),
@@ -125,7 +125,7 @@ public class InstructionDecoder {
                 return new LoadByte(new RegisterMode(Register.B),
                         new RegisterMode(Register.E));
             case LD_E_C:
-                return new LoadByte(new RegisterMode(Register.B),
+                return new LoadByte(new RegisterMode(Register.C),
                         new RegisterMode(Register.E));
             case LD_E_D:
                 return new LoadByte(new RegisterMode(Register.D),
@@ -150,7 +150,7 @@ public class InstructionDecoder {
                 return new LoadByte(new RegisterMode(Register.B),
                         new RegisterMode(Register.H));
             case LD_H_C:
-                return new LoadByte(new RegisterMode(Register.B),
+                return new LoadByte(new RegisterMode(Register.C),
                         new RegisterMode(Register.H));
             case LD_H_D:
                 return new LoadByte(new RegisterMode(Register.D),
@@ -175,7 +175,7 @@ public class InstructionDecoder {
                 return new LoadByte(new RegisterMode(Register.B),
                         new RegisterMode(Register.L));
             case LD_L_C:
-                return new LoadByte(new RegisterMode(Register.B),
+                return new LoadByte(new RegisterMode(Register.C),
                         new RegisterMode(Register.L));
             case LD_L_D:
                 return new LoadByte(new RegisterMode(Register.D),
@@ -219,7 +219,7 @@ public class InstructionDecoder {
                 return new LoadByte(new RegisterMode(Register.B),
                         new RegisterMode(Register.A));
             case LD_A_C:
-                return new LoadByte(new RegisterMode(Register.B),
+                return new LoadByte(new RegisterMode(Register.C),
                         new RegisterMode(Register.A));
             case LD_A_D:
                 return new LoadByte(new RegisterMode(Register.D),
