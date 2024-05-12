@@ -1,11 +1,16 @@
 package com.github.kheltan.gameboy.cpu;
 
-import com.github.kheltan.gameboy.cpu.instructions.Instruction;
 import com.github.kheltan.gameboy.cpu.Registers.Register;
+import com.github.kheltan.gameboy.cpu.instructions.Instruction;
+import com.github.kheltan.gameboy.cpu.instructions.addressing.ImmediateMode;
 import com.github.kheltan.gameboy.cpu.instructions.addressing.IndirectMode;
 import com.github.kheltan.gameboy.cpu.instructions.addressing.RegisterMode;
 import com.github.kheltan.gameboy.cpu.instructions.arithmetic.Adc;
 import com.github.kheltan.gameboy.cpu.instructions.arithmetic.Add;
+import com.github.kheltan.gameboy.cpu.instructions.arithmetic.Decrement;
+import com.github.kheltan.gameboy.cpu.instructions.arithmetic.Increment;
+import com.github.kheltan.gameboy.cpu.instructions.arithmetic.Sbc;
+import com.github.kheltan.gameboy.cpu.instructions.arithmetic.Sub;
 import com.github.kheltan.gameboy.cpu.instructions.load.LoadByte;
 import com.github.kheltan.gameboy.cpu.instructions.load.LoadByteImmediate;
 import com.github.kheltan.gameboy.cpu.instructions.load.LoadWordImmediate;
@@ -23,6 +28,14 @@ public class InstructionDecoder {
     public Instruction decode(final int opcode) {
         Opcode op = Opcode.getOpcode(opcode);
         switch (op) {
+            /*
+             * 8bit load/store/move instructions
+             */
+            case LD_INDIRECT_BC_A:
+                return new LoadByte(new RegisterMode(Register.A), new IndirectMode(Register.BC));
+            case LD_INDIRECT_DE_A:
+                return new LoadByte(new RegisterMode(Register.A), new IndirectMode(Register.DE));
+
             case LD_B_D8:
                 return new LoadByteImmediate(new RegisterMode(Register.B));
             case LD_D_D8:
@@ -239,7 +252,7 @@ public class InstructionDecoder {
             case LD_A_A:
                 return new LoadByte(new RegisterMode(Register.A),
                         new RegisterMode(Register.A));
-            
+
             /*
              * 16bit load/store/move instructions
              */
@@ -253,8 +266,41 @@ public class InstructionDecoder {
                 return new LoadWordImmediate(new RegisterMode(Register.SP));
 
             /*
-             * 	8bit arithmetic/logical instructions
+             * 8bit arithmetic/logical instructions
              */
+            case INC_B:
+                return new Increment(new RegisterMode(Register.B));
+            case DEC_B:
+                return new Decrement(new RegisterMode(Register.B));
+            case INC_D:
+                return new Increment(new RegisterMode(Register.D));
+            case DEC_D:
+                return new Decrement(new RegisterMode(Register.D));
+            case INC_H:
+                return new Increment(new RegisterMode(Register.H));
+            case DEC_H:
+                return new Decrement(new RegisterMode(Register.H));
+            case INC_INDIRECT_HL:
+                return new Increment(new IndirectMode(Register.HL));
+            case DEC_INDIRECT_HL:
+                return new Decrement(new IndirectMode(Register.HL));
+
+            case INC_C:
+                return new Increment(new RegisterMode(Register.C));
+            case DEC_C:
+                return new Decrement(new RegisterMode(Register.C));
+            case INC_E:
+                return new Increment(new RegisterMode(Register.E));
+            case DEC_E:
+                return new Decrement(new RegisterMode(Register.E));
+            case INC_L:
+                return new Increment(new RegisterMode(Register.L));
+            case DEC_L:
+                return new Decrement(new RegisterMode(Register.L));
+            case INC_A:
+                return new Increment(new RegisterMode(Register.A));
+            case DEC_A:
+                return new Decrement(new RegisterMode(Register.A));
 
             case ADD_A_B:
                 return new Add(new RegisterMode(Register.B));
@@ -268,6 +314,9 @@ public class InstructionDecoder {
                 return new Add(new RegisterMode(Register.H));
             case ADD_A_L:
                 return new Add(new RegisterMode(Register.L));
+            case ADD_A_INDIRECT_HL:
+                return new Add(new IndirectMode(Register.HL));
+
             case ADD_A_A:
                 return new Add(new RegisterMode(Register.A));
             case ADC_A_B:
@@ -282,8 +331,45 @@ public class InstructionDecoder {
                 return new Adc(new RegisterMode(Register.H));
             case ADC_A_L:
                 return new Adc(new RegisterMode(Register.L));
+            case ADC_A_INDIRECT_HL:
+                return new Adc(new IndirectMode(Register.HL));
             case ADC_A_A:
                 return new Adc(new RegisterMode(Register.A));
+
+            case SUB_B:
+                return new Sub(new RegisterMode(Register.B));
+            case SUB_C:
+                return new Sub(new RegisterMode(Register.C));
+            case SUB_D:
+                return new Sub(new RegisterMode(Register.D));
+            case SUB_E:
+                return new Sub(new RegisterMode(Register.E));
+            case SUB_H:
+                return new Sub(new RegisterMode(Register.H));
+            case SUB_L:
+                return new Sub(new RegisterMode(Register.L));
+            case SUB_INDIRECT_HL:
+                return new Sub(new IndirectMode(Register.HL));
+            case SUB_A:
+                return new Sub(new RegisterMode(Register.A));
+
+            case SBC_A_B:
+                return new Sbc(new RegisterMode(Register.B));
+            case SBC_A_C:
+                return new Sbc(new RegisterMode(Register.C));
+            case SBC_A_D:
+                return new Sbc(new RegisterMode(Register.D));
+            case SBC_A_E:
+                return new Sbc(new RegisterMode(Register.E));
+            case SBC_A_H:
+                return new Sbc(new RegisterMode(Register.H));
+            case SBC_A_L:
+                return new Sbc(new RegisterMode(Register.L));
+            case SBC_A_INDIRECT_HL:
+                return new Sbc(new IndirectMode(Register.HL));
+            case SBC_A_A:
+                return new Sbc(new RegisterMode(Register.A));
+
             case AND_B:
                 return new And(new RegisterMode(Register.B));
             case AND_C:
@@ -296,8 +382,11 @@ public class InstructionDecoder {
                 return new And(new RegisterMode(Register.H));
             case AND_L:
                 return new And(new RegisterMode(Register.L));
+            case AND_INDIRECT_HL:
+                return new And(new IndirectMode(Register.HL));
             case AND_A:
                 return new And(new RegisterMode(Register.A));
+
             case XOR_B:
                 return new Xor(new RegisterMode(Register.B));
             case XOR_C:
@@ -310,8 +399,11 @@ public class InstructionDecoder {
                 return new Xor(new RegisterMode(Register.H));
             case XOR_L:
                 return new Xor(new RegisterMode(Register.L));
+            case XOR_INDIRECT_HL:
+                return new Xor(new IndirectMode(Register.HL));
             case XOR_A:
                 return new Xor(new RegisterMode(Register.A));
+
             case OR_B:
                 return new Or(new RegisterMode(Register.B));
             case OR_C:
@@ -324,8 +416,11 @@ public class InstructionDecoder {
                 return new Or(new RegisterMode(Register.H));
             case OR_L:
                 return new Or(new RegisterMode(Register.L));
+            case OR_INDIRECT_HL:
+                return new Or(new IndirectMode(Register.HL));
             case OR_A:
                 return new Or(new RegisterMode(Register.A));
+
             default:
                 throw new IllegalArgumentException("Unknown opcode");
         }

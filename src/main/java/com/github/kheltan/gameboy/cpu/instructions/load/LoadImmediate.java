@@ -12,4 +12,4 @@ public abstract class LoadImmediate implements Instruction{
         return addressingMode;
     }
     
-} 
+}

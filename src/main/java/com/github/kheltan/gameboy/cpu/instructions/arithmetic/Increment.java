@@ -21,7 +21,7 @@ public class Increment implements Instruction {
     }
     @Override
     public void execute(CpuContext cpuContext, InstructionContext instructionContext) {
-        // TODO Auto-generated method stub
+        // TODO Implement Flags
         targetAddressingMode.write(cpuContext, targetAddressingMode.read(cpuContext) + 1);
         
     }

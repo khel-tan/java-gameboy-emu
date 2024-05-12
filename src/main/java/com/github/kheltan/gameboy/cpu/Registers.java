@@ -3,7 +3,7 @@ package com.github.kheltan.gameboy.cpu;
 public class Registers {
     public enum Register{
         A, F, B, C, D, E, H, L,
-        BC, DE, HL, SP,
+        BC, DE, HL, SP, AF
     }
     public enum Flag{
         Zero(0b0001), 
@@ -50,6 +50,7 @@ public class Registers {
             case DE : return mergeIntoWord(Register.D, Register.E);
             case HL : return mergeIntoWord(Register.H, Register.L);
             case SP : return sp;
+            case AF : return mergeIntoWord(Register.A, Register.F);
             // Add cases for other registers
             default: throw new IllegalArgumentException("Unknown register");
         }
@@ -68,7 +69,7 @@ public class Registers {
             case DE : d = getMSB(value); e =  getLSB(value); break;
             case HL : h = getMSB(value); l =  getLSB(value); break;
             case SP : sp = value; break;
-            // Add cases for other registers
+            case AF: a = getMSB(value); f = getLSB(value); break;
             default: throw new IllegalArgumentException("Unknown register : " + register);
         }
     }
