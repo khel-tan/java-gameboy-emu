@@ -4,6 +4,7 @@ import com.github.kheltan.gameboy.cpu.CpuContext;
 import com.github.kheltan.gameboy.cpu.instructions.Instruction;
 import com.github.kheltan.gameboy.cpu.instructions.InstructionContext;
 import com.github.kheltan.gameboy.cpu.instructions.addressing.AddressingMode;
+import com.github.kheltan.gameboy.cpu.instructions.addressing.ImmediateMode;
 
 public class LoadByte implements Instruction {
     private final int SUCCESS_CYCLES = 8;
@@ -14,6 +15,9 @@ public class LoadByte implements Instruction {
                             final AddressingMode destinationAddressingMode){
         this.sourceAddressingMode = sourceAddressingMode;
         this.destinationAddressingMode = destinationAddressingMode;
+        if(this.sourceAddressingMode.getClass() == ImmediateMode.class){
+
+        }
     }
     @Override
     public void execute(CpuContext cpuContext, InstructionContext instructionContext) {

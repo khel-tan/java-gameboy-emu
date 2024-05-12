@@ -3,16 +3,14 @@ package com.github.kheltan.gameboy.cpu.instructions.addressing;
 import com.github.kheltan.gameboy.cpu.CpuContext;
 
 public class ImmediateMode implements AddressingMode{
-    private final int immediateValue;
     
-    public ImmediateMode(int immediateValue){
-        this.immediateValue = immediateValue;
+    public ImmediateMode(){
     }
 
 
     @Override
     public int read(CpuContext context) {
-        return immediateValue;
+        throw new IllegalArgumentException("Cannot address to an immediate value!");
     }
 
     @Override
