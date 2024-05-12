@@ -2,10 +2,10 @@ package com.github.kheltan.gameboy.cpu;
 
 import com.github.kheltan.gameboy.cpu.Registers.Register;
 import com.github.kheltan.gameboy.cpu.instructions.Instruction;
-import com.github.kheltan.gameboy.cpu.instructions.addressing.ImmediateByteMode;
-import com.github.kheltan.gameboy.cpu.instructions.addressing.ImmediateWordMode;
-import com.github.kheltan.gameboy.cpu.instructions.addressing.IndirectMode;
-import com.github.kheltan.gameboy.cpu.instructions.addressing.RegisterMode;
+import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.ImmediateByteMode;
+import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.ImmediateWordMode;
+import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.IndirectMode;
+import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.RegisterMode;
 import com.github.kheltan.gameboy.cpu.instructions.arithmetic.Adc;
 import com.github.kheltan.gameboy.cpu.instructions.arithmetic.Add;
 import com.github.kheltan.gameboy.cpu.instructions.arithmetic.Decrement;

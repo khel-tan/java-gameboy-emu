@@ -5,11 +5,11 @@ import java.util.List;
 import com.github.kheltan.gameboy.cpu.CpuContext;
 import com.github.kheltan.gameboy.cpu.instructions.Instruction;
 import com.github.kheltan.gameboy.cpu.instructions.InstructionContext;
-import com.github.kheltan.gameboy.cpu.instructions.addressing.AddressingMode;
-import com.github.kheltan.gameboy.cpu.instructions.addressing.ImmediateByteMode;
-import com.github.kheltan.gameboy.cpu.instructions.addressing.ImmediateMode;
-import com.github.kheltan.gameboy.cpu.instructions.addressing.ImmediateWordMode;
-import com.github.kheltan.gameboy.cpu.instructions.addressing.RegisterMode;
+import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.AddressingMode;
+import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.ImmediateByteMode;
+import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.ImmediateMode;
+import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.ImmediateWordMode;
+import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.RegisterMode;
 
 public class Load implements Instruction {
     private final int SUCCESS_CYCLES;

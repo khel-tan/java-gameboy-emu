@@ -1,7 +1,7 @@
 package com.github.kheltan.gameboy.cpu.instructions.logical;
 
 import com.github.kheltan.gameboy.cpu.instructions.Instruction;
-import com.github.kheltan.gameboy.cpu.instructions.addressing.AddressingMode;
+import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.AddressingMode;
 
 public abstract class Logical implements Instruction  {
     private final AddressingMode addressingMode;

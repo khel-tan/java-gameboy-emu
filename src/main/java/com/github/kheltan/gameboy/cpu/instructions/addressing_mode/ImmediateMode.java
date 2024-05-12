@@ -1,4 +1,4 @@
-package com.github.kheltan.gameboy.cpu.instructions.addressing;
+package com.github.kheltan.gameboy.cpu.instructions.addressing_mode;
 
 import com.github.kheltan.gameboy.cpu.CpuContext;
 

@@ -4,7 +4,7 @@ import com.github.kheltan.gameboy.cpu.CpuContext;
 import com.github.kheltan.gameboy.cpu.Registers.Flag;
 import com.github.kheltan.gameboy.cpu.Registers.Register;
 import com.github.kheltan.gameboy.cpu.instructions.InstructionContext;
-import com.github.kheltan.gameboy.cpu.instructions.addressing.AddressingMode;
+import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.AddressingMode;
 
 public class Adc extends Arithmetic {
     private static final int SUCCESS_CYCLES = 4;
