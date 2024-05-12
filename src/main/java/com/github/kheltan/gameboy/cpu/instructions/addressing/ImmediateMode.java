@@ -2,11 +2,10 @@ package com.github.kheltan.gameboy.cpu.instructions.addressing;
 
 import com.github.kheltan.gameboy.cpu.CpuContext;
 
-public class ImmediateMode implements AddressingMode{
+public abstract class ImmediateMode implements AddressingMode{
     
     public ImmediateMode(){
     }
-
 
     @Override
     public int read(CpuContext context) {
