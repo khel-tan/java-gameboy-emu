@@ -22,7 +22,7 @@ public class Cpu {
 
                 int opcode = context.read(pc++);
                 if(opcode == -1){
-                    System.out.println("??");
+                    // System.out.println("??");
                     break;
                 }
 

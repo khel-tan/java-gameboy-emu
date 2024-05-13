@@ -35,7 +35,6 @@ public class RelativeJump implements Instruction {
 
     @Override
     public void execute(CpuContext cpuContext, InstructionContext instructionContext) {
-        System.out.println(cpuContext);
         boolean condition = false;
         if(this.branchMode instanceof ImmediateBranch){
             
@@ -52,6 +51,7 @@ public class RelativeJump implements Instruction {
         if(condition){
             
             cpuContext.set(Register.PC, cpuContext.get(Register.PC) + value);
+            System.out.println("Jumping");
             // System.out.println(cpuContext);
         }
         

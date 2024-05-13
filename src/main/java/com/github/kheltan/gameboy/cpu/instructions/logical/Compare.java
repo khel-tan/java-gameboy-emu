@@ -17,7 +17,9 @@ public class Compare extends Logical{
     public void execute(CpuContext cpuContext, InstructionContext instructionContext) {
         int result = cpuContext.get(accumulator) - getAddressingMode().read(cpuContext);
         boolean halfCarry = (cpuContext.get(accumulator) & 0x0F) - (getAddressingMode().read(cpuContext)) > 0x0F;
-
+        System.out.println("Comparing " + cpuContext.get(accumulator)
+                            + " & " + getAddressingMode().read(cpuContext)
+                            + " : " + (result < 0x00));
         cpuContext.set(Flag.Zero, result == 0);
         cpuContext.set(Flag.Sub, false);
         cpuContext.set(Flag.HalfCarry, halfCarry);

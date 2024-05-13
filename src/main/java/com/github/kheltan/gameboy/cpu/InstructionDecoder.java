@@ -259,6 +259,9 @@ public class InstructionDecoder {
             case LD_INDIRECT_HL_L:
                 return new Load(new RegisterMode(Register.L),
                         new IndirectMode(Register.HL));
+            case LD_INDIRECT_HL_A:
+                return new Load(new RegisterMode(Register.A),
+                        new IndirectMode(Register.HL));
 
             case LD_A_B:
                 return new Load(new RegisterMode(Register.B),
@@ -481,6 +484,15 @@ public class InstructionDecoder {
                 return new Increment(new RegisterMode(Register.HL));
             case INC_SP:
                 return new Increment(new RegisterMode(Register.SP));
+
+            case DEC_BC:
+                return new Decrement(new RegisterMode(Register.BC));
+            case DEC_DE:
+                return new Decrement(new RegisterMode(Register.DE));
+            case DEC_HL:
+                return new Decrement(new RegisterMode(Register.HL));
+            case DEC_SP:
+                return new Decrement(new RegisterMode(Register.SP));
 
             default:
                 throw new IllegalArgumentException("Unknown opcode");
