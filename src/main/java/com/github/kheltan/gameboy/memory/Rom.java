@@ -22,7 +22,7 @@ public class Rom implements AddressSpace {
 
     @Override
     public void setByte(int address, int value) {
-        throw new IllegalAccessError("Rom is read only");
+        throw new IllegalAccessError("Rom is read only " + address + ", " + value);
     }
     public Boolean checkBounds(int address){
         return address >= 0 && address < space.length;

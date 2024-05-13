@@ -44,7 +44,7 @@ public class Load implements Instruction {
         if(this.sourceAddressingMode instanceof ImmediateMode){
             List<Integer> arguments = instructionContext.getArguments();
             for(int i = 0; i < arguments.size(); i++){
-                value = (value << 8) | arguments.get(i);
+                value = value | (arguments.get(i) << 8* i);
             }
         }
         else{

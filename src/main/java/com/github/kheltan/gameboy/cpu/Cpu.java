@@ -18,9 +18,11 @@ public class Cpu {
         while (true) {
             try{
                 int pc = context.pc();
+                int oldPc = pc;
 
                 int opcode = context.read(pc++);
                 if(opcode == -1){
+                    System.out.println("??");
                     break;
                 }
 
@@ -34,6 +36,9 @@ public class Cpu {
                 InstructionContext instructionContext = new InstructionContext(arguments);
                 instruction.execute(context, instructionContext);
                 // System.out.println(context);
+                if(context.pc() != oldPc){
+                    continue;
+                }
                 context.setPc(pc);
             }
             catch(Exception e){

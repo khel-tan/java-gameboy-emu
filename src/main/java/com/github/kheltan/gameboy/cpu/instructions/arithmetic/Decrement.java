@@ -1,6 +1,7 @@
 package com.github.kheltan.gameboy.cpu.instructions.arithmetic;
 
 import com.github.kheltan.gameboy.cpu.CpuContext;
+import com.github.kheltan.gameboy.cpu.Registers.Flag;
 import com.github.kheltan.gameboy.cpu.instructions.Instruction;
 import com.github.kheltan.gameboy.cpu.instructions.InstructionContext;
 import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.AddressingMode;
@@ -22,7 +23,14 @@ public class Decrement implements Instruction {
     @Override
     public void execute(CpuContext cpuContext, InstructionContext instructionContext) {
         // TODO Implement Flags
-        targetAddressingMode.write(cpuContext, targetAddressingMode.read(cpuContext) - 1);
+        int original = targetAddressingMode.read(cpuContext);
+        int result = original - 1;
+        targetAddressingMode.write(cpuContext, result);
+
+        cpuContext.set(Flag.Zero, result == 0);
+        cpuContext.set(Flag.Sub, true);
+        cpuContext.set(Flag.HalfCarry, (original & 0xFF) > 0xFF);
+
         
     }
     @Override

@@ -1,5 +1,7 @@
 package com.github.kheltan.gameboy.memory;
 
+import com.github.kheltan.gameboy.utility.Constants;
+
 public class Bus implements AddressSpace {
     private final Ram ram;
     private final Rom rom;
@@ -9,12 +11,22 @@ public class Bus implements AddressSpace {
     }
     @Override
     public int getByte(int address) {
-        return rom.getByte(address);
+        if(address >= Constants.WRAM_START && address <= Constants.WRAM_END){
+            return ram.getByte(address);
+        }
+        else{
+            return rom.getByte(address);
+        }
     }
 
     @Override
     public void setByte(int address, int value) {
-        rom.setByte(address, value);
+        if(address >= Constants.WRAM_START && address <= Constants.WRAM_END){
+            ram.setByte(address, value);
+        }
+        else{
+            rom.setByte(address, value);
+        }
     }
     
 }

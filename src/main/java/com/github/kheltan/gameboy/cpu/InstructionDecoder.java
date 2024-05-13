@@ -12,8 +12,15 @@ import com.github.kheltan.gameboy.cpu.instructions.arithmetic.Decrement;
 import com.github.kheltan.gameboy.cpu.instructions.arithmetic.Increment;
 import com.github.kheltan.gameboy.cpu.instructions.arithmetic.Sbc;
 import com.github.kheltan.gameboy.cpu.instructions.arithmetic.Sub;
+import com.github.kheltan.gameboy.cpu.instructions.branch.RelativeJump;
+import com.github.kheltan.gameboy.cpu.instructions.branch_mode.CarryBranch;
+import com.github.kheltan.gameboy.cpu.instructions.branch_mode.ImmediateBranch;
+import com.github.kheltan.gameboy.cpu.instructions.branch_mode.NotCarryBranch;
+import com.github.kheltan.gameboy.cpu.instructions.branch_mode.NotZeroBranch;
+import com.github.kheltan.gameboy.cpu.instructions.branch_mode.ZeroBranch;
 import com.github.kheltan.gameboy.cpu.instructions.load.Load;
 import com.github.kheltan.gameboy.cpu.instructions.logical.And;
+import com.github.kheltan.gameboy.cpu.instructions.logical.Compare;
 import com.github.kheltan.gameboy.cpu.instructions.logical.Or;
 import com.github.kheltan.gameboy.cpu.instructions.logical.Xor;
 
@@ -26,7 +33,22 @@ public class InstructionDecoder {
 
     public Instruction decode(final int opcode) {
         Opcode op = Opcode.getOpcode(opcode);
+        System.out.println("Opcode : " + op);
         switch (op) {
+            /*
+             * Jumps/calls
+             */
+            case JR_NZ_R8:
+                return new RelativeJump(new NotZeroBranch());
+            case JR_NC_R8:
+                return new RelativeJump(new NotCarryBranch());
+            case JR_R8:
+                return new RelativeJump(new ImmediateBranch());
+            case JR_Z_R8:
+                return new RelativeJump(new ZeroBranch());
+            case JR_C_R8:
+                return new RelativeJump(new CarryBranch());
+
             /*
              * 8bit load/store/move instructions
              */
@@ -430,6 +452,35 @@ public class InstructionDecoder {
                 return new Or(new IndirectMode(Register.HL));
             case OR_A:
                 return new Or(new RegisterMode(Register.A));
+
+            case CP_B:
+                return new Compare(new RegisterMode(Register.B));
+            case CP_C:
+                return new Compare(new RegisterMode(Register.C));
+            case CP_D:
+                return new Compare(new RegisterMode(Register.D));
+            case CP_E:
+                return new Compare(new RegisterMode(Register.E));
+            case CP_H:
+                return new Compare(new RegisterMode(Register.H));
+            case CP_L:
+                return new Compare(new RegisterMode(Register.L));
+            case CP_INDIRECT_HL:
+                return new Compare(new IndirectMode(Register.HL));
+            case CP_A:
+                return new Compare(new RegisterMode(Register.A));
+
+            /*
+             * 16bit arithmetic/logical instructions
+             */
+            case INC_BC:
+                return new Increment(new RegisterMode(Register.BC));
+            case INC_DE:
+                return new Increment(new RegisterMode(Register.DE));
+            case INC_HL:
+                return new Increment(new RegisterMode(Register.HL));
+            case INC_SP:
+                return new Increment(new RegisterMode(Register.SP));
 
             default:
                 throw new IllegalArgumentException("Unknown opcode");
