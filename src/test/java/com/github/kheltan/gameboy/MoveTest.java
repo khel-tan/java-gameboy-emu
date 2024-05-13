@@ -23,7 +23,7 @@ public class MoveTest extends CpuTest{
     @MethodSource("source_Move_To_B")
     public void test_Move_To_B(List<Integer> instructions, Register source){
         Cpu cpu = createCpu(instructions);
-        CpuContext context = cpu.getContext();
+        CpuContext context = cpu.getCpuContext();
         cpu.run();
         
         // System.out.println(context);
@@ -34,7 +34,7 @@ public class MoveTest extends CpuTest{
     @MethodSource("source_Move_To_C")
     public void test_Move_To_C(List<Integer> instructions, Register source){
         Cpu cpu = createCpu(instructions);
-        CpuContext context = cpu.getContext();
+        CpuContext context = cpu.getCpuContext();
         cpu.run();
         
         // System.out.println(context);
@@ -45,7 +45,7 @@ public class MoveTest extends CpuTest{
     @MethodSource("source_Move_To_D")
     public void test_Move_To_D(List<Integer> instructions, Register source){
         Cpu cpu = createCpu(instructions);
-        CpuContext context = cpu.getContext();
+        CpuContext context = cpu.getCpuContext();
         cpu.run();
         
         // System.out.println(context);
@@ -56,7 +56,7 @@ public class MoveTest extends CpuTest{
     @MethodSource("source_Move_To_E")
     public void test_Move_To_E(List<Integer> instructions, Register source){
         Cpu cpu = createCpu(instructions);
-        CpuContext context = cpu.getContext();
+        CpuContext context = cpu.getCpuContext();
         cpu.run();
         
         // System.out.println(context);
@@ -67,7 +67,7 @@ public class MoveTest extends CpuTest{
     @MethodSource("source_Move_To_H")
     public void test_Move_To_H(List<Integer> instructions, Register source){
         Cpu cpu = createCpu(instructions);
-        CpuContext context = cpu.getContext();
+        CpuContext context = cpu.getCpuContext();
         cpu.run();
         
         // System.out.println(context);
@@ -78,7 +78,7 @@ public class MoveTest extends CpuTest{
     @MethodSource("source_Move_To_L")
     public void test_Move_To_L(List<Integer> instructions, Register source){
         Cpu cpu = createCpu(instructions);
-        CpuContext context = cpu.getContext();
+        CpuContext context = cpu.getCpuContext();
         cpu.run();
         
         // System.out.println(context);
@@ -89,7 +89,7 @@ public class MoveTest extends CpuTest{
     @MethodSource("source_Move_To_A")
     public void test_Move_To_A(List<Integer> instructions, Register source){
         Cpu cpu = createCpu(instructions);
-        CpuContext context = cpu.getContext();
+        CpuContext context = cpu.getCpuContext();
         cpu.run();
         
         // System.out.println(context);

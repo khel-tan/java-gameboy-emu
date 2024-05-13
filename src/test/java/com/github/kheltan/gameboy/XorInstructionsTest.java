@@ -26,7 +26,7 @@ public class XorInstructionsTest extends CpuTest {
     @MethodSource("source_OR_R")
     void test_OR_R(List<Integer> instructions, Register registerToTest){
         Cpu cpu = createCpu(instructions);
-        CpuContext context = cpu.getContext();
+        CpuContext context = cpu.getCpuContext();
         int initialAValue = context.get(Register.A);
         cpu.run();
         // System.out.println(context);

@@ -4,6 +4,11 @@ import com.github.kheltan.gameboy.cpu.Registers.Flag;
 import com.github.kheltan.gameboy.cpu.Registers.Register;
 import com.github.kheltan.gameboy.memory.Bus;
 
+/*
+ * This class encapsulates the state of the CPU and the Memory Bus.
+ * In addition, it also provides wrapping methods for easy getting and setting.
+ * An instance of this will be passed to the Instructions and then be modified.
+ */
 public class CpuContext {
     private final Registers registers;
     private final Bus bus;

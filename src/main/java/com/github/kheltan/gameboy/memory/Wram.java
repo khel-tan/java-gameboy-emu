@@ -2,10 +2,13 @@ package com.github.kheltan.gameboy.memory;
 
 import com.github.kheltan.gameboy.utility.Constants;
 
-public class Ram implements AddressSpace {
+/*
+ * Normal working RAM
+ */
+public class Wram implements AddressSpace {
     private final int[] space = new int[Constants.WRAM_END - Constants.WRAM_START + 1];
     private static int OFFSET = Constants.WRAM_START;
-    public Ram(){
+    public Wram(){
     }
     @Override
     public int getByte(int address) {

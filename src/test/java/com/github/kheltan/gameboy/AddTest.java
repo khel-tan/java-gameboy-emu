@@ -25,7 +25,7 @@ public class AddTest extends CpuTest {
     @MethodSource("source_ADD_R")
     void test_ADD_R(List<Integer> instructions, Register registerToTest){
         Cpu cpu = createCpu(instructions);
-        CpuContext context = cpu.getContext();
+        CpuContext context = cpu.getCpuContext();
         int initialAValue = context.get(Register.A);
         cpu.run();
         // System.out.println(context);

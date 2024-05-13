@@ -6,7 +6,7 @@ import com.github.kheltan.gameboy.cpu.CpuContext;
 import com.github.kheltan.gameboy.cpu.Opcode;
 import com.github.kheltan.gameboy.cpu.Registers;
 import com.github.kheltan.gameboy.memory.Bus;
-import com.github.kheltan.gameboy.memory.Ram;
+import com.github.kheltan.gameboy.memory.Wram;
 import com.github.kheltan.gameboy.memory.Rom;
 
 /**
@@ -18,19 +18,20 @@ public class App
     public static void main( String[] args )
     {
 
-        Bus bus = new Bus(new Ram(), new Rom(instructions()));
+        Bus bus = new Bus(new Wram(), new Rom(instructions()));
         CpuContext cpuContext = new CpuContext(new Registers(), bus);
         Cpu cpu = new Cpu(cpuContext);
-        // cpuContext.set(Flag.Zero, true);
+        System.out.println("Running Bubble Sort...");
         cpu.run();
+        System.out.println("The CPU Context after running Bubble Sort is as below.");
         System.out.println(cpuContext);
         printMemory(0xC100, 0xC100 + 8, cpuContext);
     }
 
     private static List<Integer> instructions(){
         return List.of(
-            // Initialise array
-            Opcode.LD_HL_D16.getValue() , 0x00, 0xC1, //LD HL, 0xC100
+            // Initialise array with the first element at address 0xC100
+            Opcode.LD_HL_D16.getValue() , 0x00, 0xC1, 
             Opcode.LD_A_D8.getValue(), 0x00,
             Opcode.LD_INDIRECT_HL_D8.getValue() , 5,
             Opcode.INC_HL.getValue(),
@@ -42,7 +43,7 @@ public class App
             Opcode.INC_HL.getValue(),
             Opcode.LD_INDIRECT_HL_D8.getValue() , 1,
 
-            // Initialise loop counter and HL
+            // Initialise the outer loop counter and HL
             Opcode.LD_HL_D16.getValue(), 0x00, 0xC1,
             Opcode.LD_B_D8.getValue(), 4,
 
@@ -63,13 +64,14 @@ public class App
             Opcode.LD_D_INDIRECT_HL.getValue(),
             Opcode.DEC_HL.getValue(),         
             Opcode.CP_D.getValue(),
-            Opcode.JR_C_R8.getValue(), 6, // Jump to .no_swap
+            Opcode.JR_C_R8.getValue(), 6, // Jump to .No_swap
 
             //Swap values
             Opcode.LD_INDIRECT_HL_D.getValue(),
             Opcode.INC_HL.getValue(),
             Opcode.LD_INDIRECT_HL_A.getValue(),
             Opcode.DEC_HL.getValue(),
+
             //.No_swap
             Opcode.INC_HL.getValue(),
             Opcode.DEC_C.getValue(),
@@ -77,7 +79,7 @@ public class App
 
             Opcode.LD_HL_D16.getValue(), 0x00, 0xC1,
             Opcode.DEC_B.getValue(),
-            Opcode.JR_NZ_R8.getValue(), -20
+            Opcode.JR_NZ_R8.getValue(), -20 //Jump to .Outer_loop
         );
     }
 

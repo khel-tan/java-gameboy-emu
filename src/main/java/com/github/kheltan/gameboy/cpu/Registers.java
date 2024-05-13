@@ -1,5 +1,8 @@
 package com.github.kheltan.gameboy.cpu;
 
+/*
+ * Registers of the Gameboy CPU
+ */
 public class Registers {
     public enum Register{
         A, F, B, C, D, E, H, L,

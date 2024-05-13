@@ -26,7 +26,7 @@ public class OrInstructionsTest extends CpuTest {
     @MethodSource("source_OR_R")
     void test_OR_R(List<Integer> instructions, Register registerToTest){
         Cpu cpu = createCpu(instructions);
-        CpuContext context = cpu.getContext();
+        CpuContext context = cpu.getCpuContext();
         cpu.run();
         // System.out.println(context);
         testRegister(context, Register.A, context.get(Register.A) & context.get(registerToTest));  // Assuming AND results go to register A

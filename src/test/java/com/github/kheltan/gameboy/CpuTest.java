@@ -9,12 +9,12 @@ import com.github.kheltan.gameboy.cpu.CpuContext;
 import com.github.kheltan.gameboy.cpu.Registers;
 import com.github.kheltan.gameboy.cpu.Registers.Register;
 import com.github.kheltan.gameboy.memory.Bus;
-import com.github.kheltan.gameboy.memory.Ram;
+import com.github.kheltan.gameboy.memory.Wram;
 import com.github.kheltan.gameboy.memory.Rom;
 
 public class CpuTest {
     public Cpu createCpu(List<Integer> instructions){
-        Bus bus = new Bus(new Ram(), new Rom(instructions));
+        Bus bus = new Bus(new Wram(), new Rom(instructions));
         CpuContext cpuContext = new CpuContext(new Registers(), bus);
         Cpu cpu = new Cpu(cpuContext);
         return cpu;

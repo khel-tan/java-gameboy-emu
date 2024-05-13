@@ -9,6 +9,9 @@ import com.github.kheltan.gameboy.cpu.instructions.InstructionContext;
 import com.github.kheltan.gameboy.cpu.instructions.branch_mode.BranchMode;
 import com.github.kheltan.gameboy.cpu.instructions.branch_mode.ImmediateBranch;
 
+/*
+ * Relative jumps take an 8 bit value v as an operand and jump to currentValue + v.
+ */
 public class RelativeJump implements Instruction {
     private final int SUCCESS_CYCLES;
     private final int FAILURE_CYCLES;
@@ -52,7 +55,6 @@ public class RelativeJump implements Instruction {
             
             cpuContext.set(Register.PC, cpuContext.get(Register.PC) + value);
             System.out.println("Jumping");
-            // System.out.println(cpuContext);
         }
         
     }

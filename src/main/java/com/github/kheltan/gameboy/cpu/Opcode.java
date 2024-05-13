@@ -3,6 +3,10 @@ package com.github.kheltan.gameboy.cpu;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+ * Enum acting as a hashmap between the name of the opcodes and their actual
+ * hexadecimal values
+ */
 public enum Opcode {
     NOP(0x00),
     STOP(0x10),

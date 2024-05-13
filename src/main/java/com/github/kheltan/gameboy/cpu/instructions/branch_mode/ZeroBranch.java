@@ -3,6 +3,9 @@ package com.github.kheltan.gameboy.cpu.instructions.branch_mode;
 import com.github.kheltan.gameboy.cpu.CpuContext;
 import com.github.kheltan.gameboy.cpu.Registers.Flag;
 
+/*
+ * Is the zero flag set?
+ */
 public class ZeroBranch implements BranchMode {
 
     @Override

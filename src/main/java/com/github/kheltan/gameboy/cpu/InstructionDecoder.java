@@ -24,6 +24,9 @@ import com.github.kheltan.gameboy.cpu.instructions.logical.Compare;
 import com.github.kheltan.gameboy.cpu.instructions.logical.Or;
 import com.github.kheltan.gameboy.cpu.instructions.logical.Xor;
 
+/*
+ * Singleton instance that decodes opcodes into instruction instances that can be executed 
+ */
 public class InstructionDecoder {
     public static final InstructionDecoder INSTANCE = new InstructionDecoder();
 
@@ -31,9 +34,12 @@ public class InstructionDecoder {
 
     }
 
+    /*
+     * @param opcode 
+     * @return An instance of Instruction
+     */
     public Instruction decode(final int opcode) {
         Opcode op = Opcode.getOpcode(opcode);
-        System.out.println("Opcode : " + op);
         switch (op) {
             /*
              * Jumps/calls

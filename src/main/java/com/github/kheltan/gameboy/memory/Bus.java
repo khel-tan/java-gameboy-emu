@@ -1,11 +1,14 @@
 package com.github.kheltan.gameboy.memory;
 
 import com.github.kheltan.gameboy.utility.Constants;
-
+/*
+ * The memory bus manages all memory components of the Gameboy and handles the memory mappigng as well.
+ * Currently, we have only the ROM and the Work-RAM.
+ */
 public class Bus implements AddressSpace {
-    private final Ram ram;
+    private final Wram ram;
     private final Rom rom;
-    public Bus(final Ram ram, final Rom rom){
+    public Bus(final Wram ram, final Rom rom){
         this.ram = ram;
         this.rom = rom;
     }

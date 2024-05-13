@@ -11,11 +11,16 @@ import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.ImmediateMode
 import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.ImmediateWordMode;
 import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.RegisterMode;
 
+/*
+ * Load instruction covering all LD *, * cases
+ */
 public class Load implements Instruction {
     private final int SUCCESS_CYCLES;
     private final int NUM_OF_ARGS;
     private AddressingMode sourceAddressingMode;
     private final AddressingMode destinationAddressingMode;
+
+    
     public Load(final AddressingMode sourceAddressingMode,
                             final AddressingMode destinationAddressingMode){
         this.sourceAddressingMode = sourceAddressingMode;

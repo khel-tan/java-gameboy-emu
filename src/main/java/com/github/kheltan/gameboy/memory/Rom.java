@@ -2,6 +2,9 @@ package com.github.kheltan.gameboy.memory;
 
 import java.util.List;
 
+/*
+ * Read-only memory that is typically a game cartridge
+ */
 public class Rom implements AddressSpace {
     private final int[] space;
     public Rom(final int[] space){

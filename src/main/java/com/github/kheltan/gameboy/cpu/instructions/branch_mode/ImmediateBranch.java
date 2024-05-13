@@ -2,6 +2,9 @@ package com.github.kheltan.gameboy.cpu.instructions.branch_mode;
 
 import com.github.kheltan.gameboy.cpu.CpuContext;
 
+/*
+ * For immediate jump instructions.
+ */
 public class ImmediateBranch implements BranchMode{
 
     @Override

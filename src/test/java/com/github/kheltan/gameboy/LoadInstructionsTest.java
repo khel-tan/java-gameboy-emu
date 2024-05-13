@@ -24,7 +24,7 @@ public class LoadInstructionsTest extends CpuTest {
     @MethodSource("source_LD_R_D8")
     void test_LD_R_D8(List<Integer> instructions, Register registerToTest){
         Cpu cpu = createCpu(instructions);
-        CpuContext context = cpu.getContext();
+        CpuContext context = cpu.getCpuContext();
         cpu.run();
 
         testRegister(context, registerToTest, instructions.get(1));
