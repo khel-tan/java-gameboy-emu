@@ -2,6 +2,9 @@ package com.github.kheltan.gameboy.cpu.instructions.addressing_mode;
 
 import com.github.kheltan.gameboy.cpu.CpuContext;
 
+/*
+ * Immediate mode for load instructions
+ */
 public abstract class ImmediateMode implements AddressingMode{
     
     public ImmediateMode(){

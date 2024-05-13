@@ -23,7 +23,7 @@ public class App
         Cpu cpu = new Cpu(cpuContext);
         System.out.println("Running Bubble Sort...");
         cpu.run();
-        System.out.println("The CPU Context after running Bubble Sort is as below.");
+        // System.out.println("The CPU Context after running Bubble Sort is as below.");
         System.out.println(cpuContext);
         printMemory(0xC100, 0xC100 + 8, cpuContext);
     }

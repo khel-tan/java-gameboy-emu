@@ -6,6 +6,9 @@ import com.github.kheltan.gameboy.cpu.Registers.Register;
 import com.github.kheltan.gameboy.cpu.instructions.InstructionContext;
 import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.AddressingMode;
 
+/*
+ * Add with carry
+ */
 public class Adc extends Arithmetic {
     private static final int SUCCESS_CYCLES = 4;
     private static final int NUM_OF_ARGS = 0;
