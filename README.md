@@ -1,1 +1,1 @@
-# gabar-emu
+# Gameboy CPU emulator
