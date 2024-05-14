@@ -4,7 +4,9 @@ An emulation of the original Gameboy console in Java.
 
 ## Table of Contents
 [Currently implemented features](##features)
+
 [Intended features yet to be implemented](##intended-features)
+
 [If you are a prospective employer, please go here to see a summary of notable skills that this project showcases](#for-employers)
 
 ## Features
