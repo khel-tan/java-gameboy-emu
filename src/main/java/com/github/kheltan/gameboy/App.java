@@ -1,4 +1,5 @@
 package com.github.kheltan.gameboy;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.github.kheltan.gameboy.cpu.Cpu;
@@ -17,8 +18,9 @@ public class App
 {
     public static void main( String[] args )
     {
-
-        Bus bus = new Bus(new Wram(), new Rom(instructions()));
+        List<Integer> instructions = new ArrayList<>(loadArrayInstructions());
+        instructions.addAll(sortInstructions());
+        Bus bus = new Bus(new Wram(), new Rom(instructions));
         CpuContext cpuContext = new CpuContext(new Registers(), bus);
         Cpu cpu = new Cpu(cpuContext);
         System.out.println("Running Bubble Sort...");
@@ -28,7 +30,7 @@ public class App
         printMemory(0xC100, 0xC100 + 8, cpuContext);
     }
 
-    private static List<Integer> instructions(){
+    private static List<Integer> loadArrayInstructions(){
         return List.of(
             // Initialise array with the first element at address 0xC100
             Opcode.LD_HL_D16.getValue() , 0x00, 0xC1, 
@@ -37,11 +39,15 @@ public class App
             Opcode.INC_HL.getValue(),
             Opcode.LD_INDIRECT_HL_D8.getValue() , 4,
             Opcode.INC_HL.getValue(),
-            Opcode.LD_INDIRECT_HL_D8.getValue() , 3,
+            Opcode.LD_INDIRECT_HL_D8.getValue() , 6,
             Opcode.INC_HL.getValue(),
             Opcode.LD_INDIRECT_HL_D8.getValue() , 2,
             Opcode.INC_HL.getValue(),
-            Opcode.LD_INDIRECT_HL_D8.getValue() , 1,
+            Opcode.LD_INDIRECT_HL_D8.getValue() , 1);
+    }
+
+    private static List<Integer> sortInstructions(){
+        return List.of(
 
             // Initialise the outer loop counter and HL
             Opcode.LD_HL_D16.getValue(), 0x00, 0xC1,
