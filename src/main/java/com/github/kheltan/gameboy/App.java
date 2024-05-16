@@ -19,7 +19,7 @@ public class App
     public static void main( String[] args )
     {
         List<Integer> instructions = new ArrayList<>(loadArrayInstructions());
-        // instructions.addAll(sortInstructions());
+        instructions.addAll(sortInstructions());
         Bus bus = new Bus(new Wram(), new Rom(instructions));
         CpuContext cpuContext = new CpuContext(new Registers(), bus);
         Cpu cpu = new Cpu(cpuContext);
