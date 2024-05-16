@@ -19,13 +19,12 @@ public class App
     public static void main( String[] args )
     {
         List<Integer> instructions = new ArrayList<>(loadArrayInstructions());
-        instructions.addAll(sortInstructions());
+        // instructions.addAll(sortInstructions());
         Bus bus = new Bus(new Wram(), new Rom(instructions));
         CpuContext cpuContext = new CpuContext(new Registers(), bus);
         Cpu cpu = new Cpu(cpuContext);
         System.out.println("Running Bubble Sort...");
         cpu.run();
-        // System.out.println("The CPU Context after running Bubble Sort is as below.");
         System.out.println(cpuContext);
         printMemory(0xC100, 0xC100 + 8, cpuContext);
     }

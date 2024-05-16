@@ -21,3 +21,6 @@ An emulation of the original Gameboy console in Java.
 - Graphics
 
 ## For Employers
+
+## Class Diagram
+![Class Diagram](./images/class_diagram.png "Class Diagram")
