@@ -46,6 +46,7 @@ Here are the skills I believe I have demonstrated with this project at its curre
   + Going through and figuring out the Gameboy technical reference manual
   + Git
 
+You can check out the reasoning behind my usage of the mentioned design patterns [here](#addressing-modes-and-branch-modes) and [here](#factory-pattern-in-instruction-decoder-and-the-instruction-interface).
 
 ## How to navigate the project
 ### Overview
@@ -117,7 +118,7 @@ Since we don't have the `CALL` instructions yet, the relative jumps have been ha
 I am not happy either but you can check out the instructions I have handwritten there to figure out how to write your own set of instructions that you can plug into the emulated CPU.
 
 ## Why did I do it?
-In this section, I outline the reasoning behind some of the engineering decisions I made in this project. If you have any feedback, please email me at.
+In this section, I outline the reasoning behind some of the engineering decisions I made in this project. If you have any feedback, [please email Me](mailto:kheltan.engineering@gmail.com)
 
 ### Addressing Modes and Branch Modes
 
@@ -147,4 +148,9 @@ However, I did not want to do any of this in the CPU so I decided to separate th
 5. Enjoy!
 
 ## Roadmap
-To be added...
+1. Finish the original instruction set
+2. Set up an extensible and easily usable testing architecture with JUnit 5
+3. Implement CPU interrupts
+4. Implement memory mapping
+5. Implement Graphics
+6. Implement Audio
