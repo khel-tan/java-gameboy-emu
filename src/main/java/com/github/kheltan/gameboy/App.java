@@ -2,6 +2,7 @@ package com.github.kheltan.gameboy;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 import com.github.kheltan.gameboy.cpu.Cpu;
@@ -13,15 +14,18 @@ import com.github.kheltan.gameboy.memory.Rom;
 import com.github.kheltan.gameboy.memory.Wram;
 import com.github.kheltan.gameboy.utility.Constants;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
     {
-        bubbleSort(0xC100, 5);
+        Scanner scanner = new Scanner(System.in);
+        
+        int offset = 0xC100;
+        System.out.print("Enter the array length: ");
+        int arrayLength = scanner.nextInt();
+
+        scanner.close();
+        bubbleSort(offset, arrayLength);
     }
     private static void bubbleSort(final int offset, final int arrayLength){
         List<Integer> instructions = initializeArray(offset, arrayLength);
@@ -31,10 +35,11 @@ public class App
         System.out.println("Here is the array before sorting.");
         printMemory(offset, offset + arrayLength, cpu.getCpuContext());
 
+        System.out.println("...........");
         instructions.addAll(bubbleSortLogic(offset, arrayLength));
         cpu = createCpu(instructions);
         cpu.run();
-        System.out.println("Here is the array after sorting.")
+        System.out.println("Here is the array after sorting.");
         printMemory(offset, offset + arrayLength, cpu.getCpuContext());
     }
 
@@ -164,7 +169,7 @@ public class App
     }
 
     private static void printMemory(int start, int end, CpuContext cpuContext){
-        System.out.println("The state of the memory for the specified range is...");
+        // System.out.println("The state of the memory for the specified range is...");
         for(int current = start; current <= end; current++){
             System.out.println(String.format("0x%04X", current)
                             + " : " 
