@@ -34,10 +34,12 @@ An emulation of the original Gameboy console in Java.
 To be added...
 
 ## Class Diagram
-![Class Diagram](./images/class_diagram.png "Class Diagram")
+
 
 ## How to navigate the project
-To be added...
+### Overview
+The flow of the program as follows.
+As the user, we initialise the context of the CPU and create a CPU with said context.
 
 ## How to run
 To be added...
