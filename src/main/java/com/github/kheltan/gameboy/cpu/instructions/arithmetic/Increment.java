@@ -6,6 +6,9 @@ import com.github.kheltan.gameboy.cpu.instructions.InstructionContext;
 import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.AddressingMode;
 import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.RegisterMode;
 
+/*
+ * Increment the specified register
+ */
 public class Increment implements Instruction {
     private final int SUCCESS_CYCLES;
     private final int NUM_OF_ARGS = 0;

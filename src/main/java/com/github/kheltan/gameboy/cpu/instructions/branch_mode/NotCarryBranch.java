@@ -4,7 +4,7 @@ import com.github.kheltan.gameboy.cpu.CpuContext;
 import com.github.kheltan.gameboy.cpu.Registers.Flag;
 
 /*
- * Is the carry flag unset?
+ * Check if the carry flag is unset
  */
 public class NotCarryBranch implements BranchMode {
 

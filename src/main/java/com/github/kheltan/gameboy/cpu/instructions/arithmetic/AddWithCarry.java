@@ -6,21 +6,25 @@ import com.github.kheltan.gameboy.cpu.Registers.Register;
 import com.github.kheltan.gameboy.cpu.instructions.InstructionContext;
 import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.AddressingMode;
 
-public class Sub extends Arithmetic {
+/*
+ * Add with carry
+ */
+public class AddWithCarry extends Arithmetic {
     private static final int SUCCESS_CYCLES = 4;
     private static final int NUM_OF_ARGS = 0;
     private final Register accumulator = Register.A;
-    public Sub(final AddressingMode addressingMode){
+    public AddWithCarry(final AddressingMode addressingMode){
         super(addressingMode);
     }
     @Override
     public void execute(CpuContext cpuContext, InstructionContext instructionContext) {
-        int result = cpuContext.get(accumulator) - getAddressingMode().read(cpuContext);
-        boolean halfCarry = (cpuContext.get(accumulator) & 0x0F) - (getAddressingMode().read(cpuContext)) > 0x0F;
-
+        
+        int carryFlag = cpuContext.get(Flag.Carry) ? 1 : 0;
+        int result = cpuContext.get(accumulator) + getAddressingMode().read(cpuContext) + carryFlag;
         cpuContext.set(Flag.Zero, result == 0);
         cpuContext.set(Flag.Sub, false);
-        cpuContext.set(Flag.HalfCarry, halfCarry);
+        cpuContext.set(Flag.HalfCarry, (cpuContext.get(accumulator) & 0x0F)
+                                        + (getAddressingMode().read(cpuContext)) + carryFlag > 0x0F);
         cpuContext.set(Flag.Carry, result > 0xFF);
         cpuContext.set(accumulator, result);
     }

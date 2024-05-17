@@ -5,6 +5,9 @@ import com.github.kheltan.gameboy.cpu.Registers.Register;
 import com.github.kheltan.gameboy.cpu.instructions.Instruction;
 import com.github.kheltan.gameboy.cpu.instructions.InstructionContext;
 
+/*
+ * Pop the stack and store it to the specified register
+ */
 public class Pop implements Instruction {
     private final static int SUCCESS_CYCLES = 12;
     private final static int NUM_OF_ARGS = 0;

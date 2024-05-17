@@ -5,6 +5,9 @@ import com.github.kheltan.gameboy.cpu.Registers.Register;
 import com.github.kheltan.gameboy.cpu.instructions.Instruction;
 import com.github.kheltan.gameboy.cpu.instructions.InstructionContext;
 
+/*
+ * Push to the stack the value from the specified register
+ */
 public class Push implements Instruction {
     private final static int SUCCESS_CYCLES = 16;
     private final static int NUM_OF_ARGS = 0;

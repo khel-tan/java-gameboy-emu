@@ -7,6 +7,9 @@ import com.github.kheltan.gameboy.cpu.instructions.InstructionContext;
 import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.AddressingMode;
 import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.RegisterMode;
 
+/*
+ * Decrement the specified register
+ */
 public class Decrement implements Instruction {
     private final int SUCCESS_CYCLES;
     private final int NUM_OF_ARGS = 0;

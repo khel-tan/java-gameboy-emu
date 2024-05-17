@@ -6,12 +6,12 @@ import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.ImmediateByte
 import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.ImmediateWordMode;
 import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.IndirectMode;
 import com.github.kheltan.gameboy.cpu.instructions.addressing_mode.RegisterMode;
-import com.github.kheltan.gameboy.cpu.instructions.arithmetic.Adc;
+import com.github.kheltan.gameboy.cpu.instructions.arithmetic.AddWithCarry;
 import com.github.kheltan.gameboy.cpu.instructions.arithmetic.Add;
 import com.github.kheltan.gameboy.cpu.instructions.arithmetic.Decrement;
 import com.github.kheltan.gameboy.cpu.instructions.arithmetic.Increment;
-import com.github.kheltan.gameboy.cpu.instructions.arithmetic.Sbc;
-import com.github.kheltan.gameboy.cpu.instructions.arithmetic.Sub;
+import com.github.kheltan.gameboy.cpu.instructions.arithmetic.SubtractionWithCarry;
+import com.github.kheltan.gameboy.cpu.instructions.arithmetic.Subtraction;
 import com.github.kheltan.gameboy.cpu.instructions.branch.RelativeJump;
 import com.github.kheltan.gameboy.cpu.instructions.branch_mode.CarryBranch;
 import com.github.kheltan.gameboy.cpu.instructions.branch_mode.ImmediateBranch;
@@ -361,55 +361,55 @@ public class InstructionDecoder {
             case ADD_A_A:
                 return new Add(new RegisterMode(Register.A));
             case ADC_A_B:
-                return new Adc(new RegisterMode(Register.B));
+                return new AddWithCarry(new RegisterMode(Register.B));
             case ADC_A_C:
-                return new Adc(new RegisterMode(Register.C));
+                return new AddWithCarry(new RegisterMode(Register.C));
             case ADC_A_D:
-                return new Adc(new RegisterMode(Register.D));
+                return new AddWithCarry(new RegisterMode(Register.D));
             case ADC_A_E:
-                return new Adc(new RegisterMode(Register.E));
+                return new AddWithCarry(new RegisterMode(Register.E));
             case ADC_A_H:
-                return new Adc(new RegisterMode(Register.H));
+                return new AddWithCarry(new RegisterMode(Register.H));
             case ADC_A_L:
-                return new Adc(new RegisterMode(Register.L));
+                return new AddWithCarry(new RegisterMode(Register.L));
             case ADC_A_INDIRECT_HL:
-                return new Adc(new IndirectMode(Register.HL));
+                return new AddWithCarry(new IndirectMode(Register.HL));
             case ADC_A_A:
-                return new Adc(new RegisterMode(Register.A));
+                return new AddWithCarry(new RegisterMode(Register.A));
 
             case SUB_B:
-                return new Sub(new RegisterMode(Register.B));
+                return new Subtraction(new RegisterMode(Register.B));
             case SUB_C:
-                return new Sub(new RegisterMode(Register.C));
+                return new Subtraction(new RegisterMode(Register.C));
             case SUB_D:
-                return new Sub(new RegisterMode(Register.D));
+                return new Subtraction(new RegisterMode(Register.D));
             case SUB_E:
-                return new Sub(new RegisterMode(Register.E));
+                return new Subtraction(new RegisterMode(Register.E));
             case SUB_H:
-                return new Sub(new RegisterMode(Register.H));
+                return new Subtraction(new RegisterMode(Register.H));
             case SUB_L:
-                return new Sub(new RegisterMode(Register.L));
+                return new Subtraction(new RegisterMode(Register.L));
             case SUB_INDIRECT_HL:
-                return new Sub(new IndirectMode(Register.HL));
+                return new Subtraction(new IndirectMode(Register.HL));
             case SUB_A:
-                return new Sub(new RegisterMode(Register.A));
+                return new Subtraction(new RegisterMode(Register.A));
 
             case SBC_A_B:
-                return new Sbc(new RegisterMode(Register.B));
+                return new SubtractionWithCarry(new RegisterMode(Register.B));
             case SBC_A_C:
-                return new Sbc(new RegisterMode(Register.C));
+                return new SubtractionWithCarry(new RegisterMode(Register.C));
             case SBC_A_D:
-                return new Sbc(new RegisterMode(Register.D));
+                return new SubtractionWithCarry(new RegisterMode(Register.D));
             case SBC_A_E:
-                return new Sbc(new RegisterMode(Register.E));
+                return new SubtractionWithCarry(new RegisterMode(Register.E));
             case SBC_A_H:
-                return new Sbc(new RegisterMode(Register.H));
+                return new SubtractionWithCarry(new RegisterMode(Register.H));
             case SBC_A_L:
-                return new Sbc(new RegisterMode(Register.L));
+                return new SubtractionWithCarry(new RegisterMode(Register.L));
             case SBC_A_INDIRECT_HL:
-                return new Sbc(new IndirectMode(Register.HL));
+                return new SubtractionWithCarry(new IndirectMode(Register.HL));
             case SBC_A_A:
-                return new Sbc(new RegisterMode(Register.A));
+                return new SubtractionWithCarry(new RegisterMode(Register.A));
 
             case AND_B:
                 return new And(new RegisterMode(Register.B));

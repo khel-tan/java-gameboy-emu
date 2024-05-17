@@ -4,7 +4,7 @@ import com.github.kheltan.gameboy.cpu.CpuContext;
 import com.github.kheltan.gameboy.cpu.Registers.Flag;
 
 /*
- * Is the zero flag set?
+ * Check if the zero flag is set
  */
 public class ZeroBranch implements BranchMode {
 

@@ -8,11 +8,14 @@ import java.util.List;
 public class InstructionContext {
     private final List<Integer> arguments;
     /*
-     * @param A list of integers representing the arguments to an instructions
+     * @param arguments A list of integers representing the arguments to an instructions
      */
     public InstructionContext(final List<Integer> arguments){
         this.arguments = arguments;
     }
+    /*
+     * Return arguments
+     */
     public List<Integer> getArguments() {
         return arguments;
     }

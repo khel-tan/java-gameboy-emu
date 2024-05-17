@@ -17,6 +17,9 @@ public class Cpu {
     public CpuContext getCpuContext() {
         return cpuContext;
     }
+    /*
+     * Run the CPU instructions
+     */
     public void run(){
         while (true) {
             try{
