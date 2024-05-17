@@ -8,6 +8,9 @@ An emulation of the original Gameboy console in Java.
 - [Intended features yet to be implemented](#intended-features)
 - [If you are a prospective employer, please go here to see a summary of notable skills that this project showcases](#for-potential-employers)
 - [What a big project! How do I navigate this?](#how-to-navigate-the-project)
+  + [Overview](#overview)
+  + [Decoding instructions](#decoding-instructions)
+  + [Opcodes](#opcodes)
 - [Why did I do some of the things that I did?](#why-did-I-do-it?)
 - [This looks cool! How do I run it?](#how-to-run)
 - [Project Roadmap](#roadmap)
@@ -32,7 +35,16 @@ An emulation of the original Gameboy console in Java.
 - Save State
 
 ## For Potential Employers
-To be added...
+Here are the skills I believe I have demonstrated with this project at its current state.
+- Java language and tools
+  + Basics
+  + Object Oriented Programming in Java
+  + Usage of Maven
+- General Software Engineering
+  + Design patterns
+    - Factory, Command, Bridge
+  + Going through and figuring out the Gameboy technical reference manual
+  + Git
 
 
 ## How to navigate the project
@@ -70,6 +82,7 @@ It takes an integer as the input and returns an implementation of the instructio
 The Instruction interface is implemented by many classes and this diversity reflects the variety of instructions in the instruction set.
 
 The constructor of an implementation of Instruction that involve moving bytes/words between the register space and the memory space will either have one or two parameters : the source addressing mode and the destination addressing mode.
+[You can read my reasoning behind how the decoder and instructions are structured here.](#factory-pattern-in-instruction-decoder-and-the-instruction-interface)
 
 Addressing mode abstracts away the logic of the actual reading of the source or the actual writing of the destination.
 As terminal implementations, we have
@@ -85,7 +98,7 @@ Currently, we have
 2. Carry/NotCarry for checking if the Carry flag is set
 3. Flag/NotFlag for checking if some flag is set for all remaining flags.
 
-You may be asking yourself why I am separating Branch Modes and Addressing Modes from the Instruction classes. Go here for an explanation.
+You may be asking yourself why I am separating Branch Modes and Addressing Modes from the Instruction classes. [Go here for an explanation.](#addressing-modes-and-branch-modes)
 
 Here is a class diagram to get a bird eye's view of the instructions and the modes.
 
@@ -105,6 +118,25 @@ I am not happy either but you can check out the instructions I have handwritten 
 
 ## Why did I do it?
 In this section, I outline the reasoning behind some of the engineering decisions I made in this project. If you have any feedback, please email me at.
+
+### Addressing Modes and Branch Modes
+
+At first, in my youthful naivety, I was implementing different classes for instructions with the same logic but different data sources. For example, having 3 different types of Load classes for when the source is an immediate value, a register or memory.
+I was duplicating a lot of code and it was a pain to fix mistakes or to extend classes.
+Then, I figured out that I was doing it all wrong.
+Just look at the Load Instructions.
+They have two separate components, the execution logic and where the data comes from.
+Those two components are not dependent on each other yet I was trying to extend them in the same direction in the class hierarchy.
+
+Coming on this realisation, I did some reading and found that the `Bridge Pattern` is used when classes are extended in two or more directions that are orthogonal to each other.
+I implemented it for both addressing and the conditional branching. The complex logic was abstracted away and add new instruction classes became a lot simpler!
+
+### Factory Pattern in Instruction Decoder and the Instruction interface
+This one is a no-brainer. There are over 200 opcodes and that is discounting the extended instruction set.
+
+I knew from the start that I was going to have to do a tedious and huge block of switch.
+However, I did not want to do any of this in the CPU so I decided to separate the decoding process to the Decoder who would return a nicely encapsulated object that contains the instruction logic. From there, it seemed natural to define an all-encompassing interface for all types of instructions and to have an `execute()` method that the CPU can call without having to care about what exact type of instruction it was.
+
 
 ## How to run
 
