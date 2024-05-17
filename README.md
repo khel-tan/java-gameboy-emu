@@ -8,6 +8,7 @@ An emulation of the original Gameboy console in Java.
 - [Intended features yet to be implemented](#intended-features)
 - [If you are a prospective employer, please go here to see a summary of notable skills that this project showcases](#for-potential-employers)
 - [What a big project! How do I navigate this?](#how-to-navigate-the-project)
+- [This looks cool! How do I run it?](#how-to-run)
 - [Roadmap](#roadmap)
 
 ## Features
@@ -28,6 +29,9 @@ To be added...
 ![Class Diagram](./images/class_diagram.png "Class Diagram")
 
 ## How to navigate the project
+To be added...
+
+## How to run
 To be added...
 
 ## Roadmap
